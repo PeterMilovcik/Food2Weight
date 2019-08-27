@@ -6,9 +6,9 @@
     xmlns:behaviors="clr-namespace:Food2Weight.Behaviors;assembly=Food2Weight"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModels="clr-namespace:Food2Weight.ViewModels;assembly=Food2Weight"
+    xmlns:vm="clr-namespace:Food2Weight.ViewModels;assembly=Food2Weight"
     Title="Add Food"
-    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    vm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid>

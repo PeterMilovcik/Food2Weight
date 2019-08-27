@@ -28,6 +28,7 @@ namespace Food2Weight.Bootstrap
             builder.RegisterType<SetGoalWeightViewModel>().SingleInstance();
             builder.RegisterType<EditWeightHistoryViewModel>().SingleInstance();
             builder.RegisterType<EditWeightRecordViewModel>().SingleInstance();
+            builder.RegisterType<FoodListViewModel>().SingleInstance();
 
             container = builder.Build();
         }

@@ -68,7 +68,7 @@
                             <Label
                                 Grid.Column="2"
                                 Margin="15,0,30,0"
-                                Text="{Binding WeightChange, StringFormat='{0:F2}'}"
+                                Text="{Binding WeightChange, StringFormat='{0:N2}'}"
                                 VerticalOptions="Center" />
                         </Grid>
                     </ViewCell>

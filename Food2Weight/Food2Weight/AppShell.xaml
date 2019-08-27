@@ -31,6 +31,13 @@
             </ShellContent>
         </Tab>
     </FlyoutItem>
+    <FlyoutItem Title="Food List" Icon="food_black.png">
+        <Tab>
+            <ShellContent>
+                <views:FoodListView />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
     <FlyoutItem Title="Weight History" Icon="weight_scale_black.png">
         <Tab>
             <ShellContent>
@@ -38,7 +45,7 @@
             </ShellContent>
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Food History" Icon="food_black.png">
+    <FlyoutItem Title="Food History" Icon="history_black.png">
         <Tab>
             <ShellContent>
                 <views:FoodHistoryView />
