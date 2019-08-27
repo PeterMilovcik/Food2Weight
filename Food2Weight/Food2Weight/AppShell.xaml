@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="Food2Weight.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Food2Weight.Views"
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black"
+    Visual="Material"
+    mc:Ignorable="d">
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="{StaticResource Black}" HeightRequest="150">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="Food 2 Weight"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    <FlyoutItem Title="Home" Icon="home.png">
+        <Tab>
+            <ShellContent>
+                <views:MainView />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Weight History" Icon="weight_scale_black.png">
+        <Tab>
+            <ShellContent>
+                <views:WeightHistoryView />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Food History" Icon="food_black.png">
+        <Tab>
+            <ShellContent>
+                <views:FoodHistoryView />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+</Shell>

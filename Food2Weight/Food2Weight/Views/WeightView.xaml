@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Food2Weight.Views.WeightView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <progressBar:SfLinearProgressBar
+                Grid.Row="0"
+                HorizontalOptions="Fill"
+                IsIndeterminate="True"
+                IsVisible="{Binding IsBusy}"
+                ProgressColor="{StaticResource Black}"
+                TrackColor="{StaticResource Grey}"
+                VerticalOptions="Start" />
+
+          <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Source="arrow_drop_up.png"
+                    Style="{StaticResource WeightChangeIndicator}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeWeightCommand}" CommandParameter="100" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Source="arrow_drop_up.png"
+                    Style="{StaticResource WeightChangeIndicator}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeWeightCommand}" CommandParameter="10" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Source="arrow_drop_up.png"
+                    Style="{StaticResource WeightChangeIndicator}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeWeightCommand}" CommandParameter="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="5"
+                    Source="arrow_drop_up.png"
+                    Style="{StaticResource WeightChangeIndicator}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeWeightCommand}" CommandParameter="0.1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Style="{StaticResource WeightLabel}"
+                    Text="{Binding FirstDigit}">
+                    <Label.GestureRecognizers>
+                        <SwipeGestureRecognizer
+                            Command="{Binding SwipeFirstDigitCommand}"
+                            CommandParameter="Down"
+                            Direction="Down" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Style="{StaticResource WeightLabel}"
+                    Text="{Binding SecondDigit}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Style="{StaticResource WeightLabel}"
+                    Text="{Binding ThirdDigit}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="4"
+                    Style="{StaticResource WeightLabel}"
+                    Text="." />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="5"
+                    Style="{StaticResource WeightLabel}"
+                    Text="{Binding FirstDecimalPlace}" />
+                <Image
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Source="arrow_drop_down.png"
+                    Style="{StaticResource WeightChangeIndicator}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeWeightCommand}" CommandParameter="-100" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Source="arrow_drop_down.png"
+                    Style="{StaticResource WeightChangeIndicator}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeWeightCommand}" CommandParameter="-10" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Source="arrow_drop_down.png"
+                    Style="{StaticResource WeightChangeIndicator}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeWeightCommand}" CommandParameter="-1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image
+                    Grid.Row="2"
+                    Grid.Column="5"
+                    Source="arrow_drop_down.png"
+                    Style="{StaticResource WeightChangeIndicator}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeWeightCommand}" CommandParameter="-0.1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <DatePicker
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource White}"
+                    Date="{Binding Date}"
+                    VerticalOptions="Start" />
+                <TimePicker
+                    Grid.Column="1"
+                    BackgroundColor="{StaticResource White}"
+                    Time="{Binding Time}"
+                    VerticalOptions="Start" />
+            </Grid>
+
+            <Button
+                Grid.Row="3"
+                Command="{Binding SubmitCommand}"
+                HorizontalOptions="End"
+                ImageSource="check.png"
+                Style="{StaticResource FloatingActionButton}"
+                VerticalOptions="End" />
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Food2Weight.Views.AddFoodView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Food2Weight.Behaviors;assembly=Food2Weight"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Food2Weight.ViewModels;assembly=Food2Weight"
+    Title="Add Food"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <DatePicker
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource White}"
+                    Date="{Binding Date}" />
+                <TimePicker
+                    Grid.Column="1"
+                    BackgroundColor="{StaticResource White}"
+                    Time="{Binding Time}" />
+            </Grid>
+            <Grid Grid.Row="1" Margin="25,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <SearchBar
+                    Grid.Row="0"
+                    Placeholder="find or add food"
+                    PlaceholderColor="{StaticResource Grey}"
+                    SearchCommand="{Binding AddFoodCommand}"
+                    Text="{Binding SearchText}">
+                    <SearchBar.Behaviors>
+                        <behaviors:EventToCommandBehavior Command="{Binding SearchTextChangedCommand}" EventName="TextChanged" />
+                    </SearchBar.Behaviors>
+                </SearchBar>
+            </Grid>
+            <ListView Grid.Row="2" ItemsSource="{Binding Items}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <SwipeGestureRecognizer Command="{Binding DecreaseCountCommand}" Direction="Left" />
+                                    <SwipeGestureRecognizer Command="{Binding IncreaseCountCommand}" Direction="Right" />
+                                    <TapGestureRecognizer Command="{Binding IncreaseCountCommand}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Opacity="0.5"
+                                    Source="arrow_drop_left.png"
+                                    WidthRequest="35">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DecreaseCountCommand}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Medium"
+                                    HorizontalTextAlignment="End"
+                                    Text="{Binding Count, Converter={StaticResource IntToTimesConverter}}"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Column="2"
+                                    Margin="5,0"
+                                    FontSize="Medium"
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource Black}"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Column="3"
+                                    Margin="5,0"
+                                    FontSize="Medium"
+                                    Text="{Binding WeightChange}"
+                                    TextColor="{StaticResource Black}"
+                                    VerticalTextAlignment="Center" />
+                                <Image
+                                    Grid.Column="4"
+                                    Opacity="0.5"
+                                    Source="arrow_drop_right.png"
+                                    WidthRequest="35">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding IncreaseCountCommand}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Grid.Row="2"
+                Command="{Binding SubmitCommand}"
+                HorizontalOptions="End"
+                ImageSource="check.png"
+                Style="{StaticResource FloatingActionButton}"
+                VerticalOptions="End" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

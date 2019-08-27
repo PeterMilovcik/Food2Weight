@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Food2Weight.Views.EditWeightHistoryView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Food2Weight.ViewModels;assembly=Food2Weight"
+    Title="Edit Weight History"
+    vm:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid>
+            <ListView ItemsSource="{Binding Items}" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EditCommand}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="30,0"
+                                    Text="{Binding At}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="0"
+                                    Text="{Binding Value}"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    Grid.Column="2"
+                                    Margin="15,0"
+                                    Opacity="0.5"
+                                    Source="cross_black.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RemoveCommand}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Food2Weight.Views.FoodHistoryView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Food2Weight.ViewModels;assembly=Food2Weight"
+    Title="Food History"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ListView
+            IsGroupingEnabled="True"
+            ItemsSource="{Binding Items}"
+            SelectionMode="None">
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="{StaticResource Black}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Margin="30,0"
+                                FontAttributes="Bold"
+                                HeightRequest="40"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding Date}"
+                                TextColor="{StaticResource White}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="30,0"
+                                FontAttributes="Bold"
+                                HeightRequest="40"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding WeightChange}"
+                                TextColor="{StaticResource White}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Margin="30,0,0,0"
+                                Text="{Binding At, StringFormat='{}{0:HH\\:mm}'}"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="15,0,0,0"
+                                Text="{Binding Name}"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                Margin="15,0,30,0"
+                                Text="{Binding WeightChange, StringFormat='{0:F2}'}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

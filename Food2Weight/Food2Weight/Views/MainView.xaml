@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Food2Weight.Views.MainView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+    xmlns:views="clr-namespace:Food2Weight.Views;assembly=Food2Weight"
+    xmlns:vm="clr-namespace:Food2Weight.ViewModels;assembly=Food2Weight"
+    Title="Food 2 Weight"
+    vm:ViewModelLocator.AutoWireViewModel="True"
+    Visual="Material"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <progressBar:SfLinearProgressBar
+            Grid.Row="0"
+            HorizontalOptions="Fill"
+            IsIndeterminate="True"
+            IsVisible="{Binding IsBusy}"
+            ProgressColor="{StaticResource Black}"
+            TrackColor="{StaticResource Grey}"
+            VerticalOptions="Start" />
+
+        <views:BubbleView
+            Grid.Row="0"
+            Header="Current"
+            IsVisible="{Binding IsCurrentWeightVisible}"
+            Text="{Binding CurrentWeight}">
+            <views:BubbleView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ShowWeightHistoryCommand}" />
+            </views:BubbleView.GestureRecognizers>
+        </views:BubbleView>
+
+        <Image
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            HeightRequest="80"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsCurrentWeightVisible}"
+            Source="ic_arrow_downward.png"
+            VerticalOptions="Center"
+            WidthRequest="80" />
+
+        <views:BubbleView
+            Grid.Row="1"
+            Header="Goal"
+            IsVisible="{Binding IsCurrentWeightVisible}"
+            Text="{Binding GoalWeight}">
+            <views:BubbleView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SetGoalWeightCommand}" />
+            </views:BubbleView.GestureRecognizers>
+        </views:BubbleView>
+
+        <Grid
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            BackgroundColor="{StaticResource White}"
+            IsVisible="{Binding IsActionMenuVisible}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                FontSize="Medium"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                Text="{Binding ActionMenuText}"
+                VerticalOptions="End" />
+            <Image
+                Grid.Row="2"
+                Margin="0,0,80,0"
+                HorizontalOptions="End"
+                Opacity="0.5"
+                Source="pointer.png"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <Button
+            x:Name="AddFoodButton"
+            Grid.Row="2"
+            Clicked="AddFoodButton_OnClicked"
+            Command="{Binding AddFoodCommand}"
+            HorizontalOptions="End"
+            ImageSource="add_food.png"
+            IsVisible="{Binding IsAddFoodButtonVisible}"
+            Style="{StaticResource FloatingActionButton}"
+            VerticalOptions="End" />
+
+        <Button
+            x:Name="AddWeightButton"
+            Grid.Row="2"
+            Clicked="AddWeightButton_OnClicked"
+            Command="{Binding AddWeightCommand}"
+            HorizontalOptions="End"
+            ImageSource="add_weight.png"
+            Style="{StaticResource FloatingActionButton}"
+            VerticalOptions="End" />
+
+        <Button
+            x:Name="AddButton"
+            Grid.Row="2"
+            Clicked="FloatingActionButton_OnClicked"
+            Command="{Binding ToggleActionMenuVisibilityCommand}"
+            HorizontalOptions="End"
+            ImageSource="add.png"
+            IsVisible="{Binding IsAddButtonVisible}"
+            Style="{StaticResource FloatingActionButton}"
+            VerticalOptions="End" />
+
+    </Grid>
+
+</ContentPage>
