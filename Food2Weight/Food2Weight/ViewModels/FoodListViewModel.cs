@@ -29,7 +29,8 @@ namespace Food2Weight.ViewModels
             foreach (var foodModels in groupedFoodByFirstLetter.OrderBy(g => g.Key))
             {
                 var model = new Model(char.ToUpper(foodModels.Key));
-                model.AddRange(foodModels.AsEnumerable().OrderBy(fm => fm.Name));
+                var orderedFood = foodModels.AsEnumerable().OrderBy(fm => fm.Name).ToList();
+                model.AddRange(orderedFood);
                 models.Add(model);
             }
             Items = new ObservableCollection<Model>(models);

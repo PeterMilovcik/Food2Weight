@@ -16,6 +16,8 @@ namespace Food2Weight.Models
 
         public string Name { get; }
 
+        public int Count => Records.Count;
+
         public List<FoodRecordModel> Records { get; }
 
         public double WeightChange => Records.Sum(r => r.WeightChange);

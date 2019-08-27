@@ -38,18 +38,25 @@
                         <ViewCell>
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label
                                     Grid.Column="0"
-                                    Margin="30,0"
+                                    HorizontalTextAlignment="End"
+                                    Text="{Binding Count, Converter={StaticResource IntToTimesConverter}}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="15,0"
                                     HorizontalTextAlignment="Start"
                                     Text="{Binding Name}"
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="Center" />
                                 <Label
-                                    Grid.Column="0"
+                                    Grid.Column="2"
                                     Margin="30,0"
                                     HorizontalTextAlignment="End"
                                     Text="{Binding WeightChange, StringFormat='{0:N2}'}"
